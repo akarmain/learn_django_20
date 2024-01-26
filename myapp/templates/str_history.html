@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="center-container">
+    <div class="card" style="width: 32rem;">
+        <div class="card-body">
+            <h5 class="card-title">История запросов</h5>
+            <ul>
+                {% for query in history %}
+                <li>
+                    Дата: {{ query.query_date }} | Время: {{ query.query_time }}<br>
+                    Запрос: {{ query.input_string }}<br>
+                    Количество слов: {{ query.word_count }} | Количество символов: {{ query.char_count }}
+                </li>
+                {% empty %}
+                <li>Запросов не найдено.</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}
