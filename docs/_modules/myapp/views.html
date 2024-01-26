@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html  lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+      <title>myapp.views</title>
+    
+          <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+          <link rel="stylesheet" href="../../_static/theme.css " type="text/css" />
+      
+      <!-- sphinx script_files -->
+        <script src="../../_static/documentation_options.js?v=a2ea6a14"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../_static/translations.js?v=29b1f277"></script>
+
+      
+      <!-- bundled in js (rollup iife) -->
+      <!-- <script src="../../_static/theme-vendors.js"></script> -->
+      <script src="../../_static/theme.js" defer></script>
+    
+  <link rel="index" title="Алфавитный указатель" href="../../genindex.html" />
+  <link rel="search" title="Поиск" href="../../search.html" /> 
+  </head>
+
+  <body>
+    <div id="app">
+    <div class="theme-container" :class="pageClasses"><navbar @toggle-sidebar="toggleSidebar">
+  <router-link to="../../index.html" class="home-link">
+    
+      <span class="site-name">Akarmain learn django</span>
+    
+  </router-link>
+
+  <div class="links">
+    <navlinks class="can-hide">
+
+
+
+    </navlinks>
+  </div>
+</navbar>
+
+      
+      <div class="sidebar-mask" @click="toggleSidebar(false)">
+      </div>
+        <sidebar @toggle-sidebar="toggleSidebar">
+          
+          <navlinks>
+            
+
+
+
+            
+          </navlinks><div id="searchbox" class="searchbox" role="search">
+  <div class="caption"><span class="caption-text">Быстрый поиск</span>
+    <div class="searchformwrapper">
+      <form class="search" action="../../search.html" method="get">
+        <input type="text" name="q" />
+        <input type="submit" value="Поиск" />
+        <input type="hidden" name="check_keywords" value="yes" />
+        <input type="hidden" name="area" value="default" />
+      </form>
+    </div>
+  </div>
+</div><div class="sidebar-links" role="navigation" aria-label="main navigation">
+  
+    <div class="sidebar-group">
+      <p class="caption">
+        <span class="caption-text"><a href="../../index.html#welcome-to-akarmain-learn-django-s-documentation">Contents:</a></span>
+      </p>
+      <ul class="">
+        
+          <li class="toctree-l1 ">
+            
+              <a href="../../reStructuredText.html" class="reference internal ">Документация пользователя</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="../../developer_documentation.html" class="reference internal ">Документация для разработчиков</a>
+            
+
+            
+          </li>
+
+        
+      </ul>
+    </div>
+  
+</div>
+        </sidebar>
+
+      <page>
+          <div class="body-header" role="navigation" aria-label="navigation">
+  
+  <ul class="breadcrumbs">
+    <li><a href="../../index.html">Docs</a> &raquo;</li>
+    
+      <li><a href="../index.html">Код модуля</a> &raquo;</li>
+    
+    <li>myapp.views</li>
+  </ul>
+  
+
+  <ul class="page-nav">
+</ul>
+  
+</div>
+<hr>
+          <div class="content" role="main" v-pre>
+            
+  <h1>Исходный код myapp.views</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">django.contrib.auth</span> <span class="kn">import</span> <span class="n">logout</span><span class="p">,</span> <span class="n">login</span>
+<span class="kn">from</span> <span class="nn">django.contrib.auth.views</span> <span class="kn">import</span> <span class="n">LoginView</span>
+<span class="kn">from</span> <span class="nn">.forms</span> <span class="kn">import</span> <span class="n">RegisterUserForm</span><span class="p">,</span> <span class="n">LoginUserForm</span>
+<span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> <span class="n">ExpressionHistory</span><span class="p">,</span> <span class="n">StringQuery</span>
+<span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">from</span> <span class="nn">django.http</span> <span class="kn">import</span> <span class="n">HttpResponseForbidden</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">from</span> <span class="nn">django.urls</span> <span class="kn">import</span> <span class="n">reverse_lazy</span>
+<span class="kn">from</span> <span class="nn">django.views.generic</span> <span class="kn">import</span> <span class="n">CreateView</span>
+<span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="kn">import</span> <span class="n">render</span><span class="p">,</span> <span class="n">redirect</span>
+<span class="kn">from</span> <span class="nn">django.contrib.auth.decorators</span> <span class="kn">import</span> <span class="n">login_required</span>
+
+
+<div class="viewcode-block" id="index">
+<a class="viewcode-back" href="../../developer_documentation.html#myapp.views.index">[документация]</a>
+<span class="k">def</span> <span class="nf">index</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Обработчик запроса для главной страницы.</span>
+<span class="sd">    При вызове этой функции пользователю отображается главная страница.</span>
+<span class="sd">    :param Объект HttpRequest от Django.</span>
+<span class="sd">    :return Рендер главной страницы &#39;index.html&#39;.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;index.html&#39;</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="riddle">
+<a class="viewcode-back" href="../../developer_documentation.html#myapp.views.riddle">[документация]</a>
+<span class="k">def</span> <span class="nf">riddle</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Обработчик запроса для главной страницы.</span>
+<span class="sd">    При вызове этой функции пользователю отображается главная страница.</span>
+<span class="sd">    :param Объект HttpRequest от Django.</span>
+<span class="sd">    :return HttpResponse: Рендер главной страницы &#39;index.html&#39;.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;riddle.html&#39;</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="answer">
+<a class="viewcode-back" href="../../developer_documentation.html#myapp.views.answer">[документация]</a>
+<span class="k">def</span> <span class="nf">answer</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Обработчик запроса для страницы с ответами на загадки.</span>
+<span class="sd">    Показывает пользователю страницу с ответами на предыдущие загадки.</span>
+
+<span class="sd">    :param Объект HttpRequest от Django.</span>
+<span class="sd">    :return: HttpResponse: Рендер страницы &#39;answer.html&#39; с ответами на загадки.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;answer.html&#39;</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="multiply">
+<a class="viewcode-back" href="../../developer_documentation.html#myapp.views.multiply">[документация]</a>
+<span class="k">def</span> <span class="nf">multiply</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Обработчик запроса для страницы умножения числа.</span>
+<span class="sd">    На этой странице пользователь может ввести число, и функция</span>
+<span class="sd">    вернет результат его умножения на числа от 1 до 10.</span>
+<span class="sd">    :param Объект HttpRequest от Django.</span>
+<span class="sd">    :return: HttpResponse: Рендер страницы &#39;multiply.html&#39; с результатами умножения или сообщением об ошибке.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">context</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">value</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">GET</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;value&#39;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">value</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">num</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+            <span class="n">context</span><span class="p">[</span><span class="s1">&#39;results&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[(</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span> <span class="o">*</span> <span class="n">num</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">)]</span>
+            <span class="n">context</span><span class="p">[</span><span class="s1">&#39;value&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">num</span>
+        <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+            <span class="n">context</span><span class="p">[</span><span class="s1">&#39;error&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;Некорректное значение&quot;</span>
+
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;multiply.html&#39;</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="generate_expression">
+<a class="viewcode-back" href="../../developer_documentation.html#myapp.views.generate_expression">[документация]</a>
+<span class="k">def</span> <span class="nf">generate_expression</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Обработчик запроса для генерации и оценки математических выражений.</span>
+
+<span class="sd">    При POST запросе пользователь отправляет математическое выражение,</span>
+<span class="sd">    которое оценивается и записывается в историю. При GET запросе</span>
+<span class="sd">    генерируется случайное выражение.</span>
+<span class="sd">    :param request: Объект HttpRequest от Django.</span>
+<span class="sd">    :return: HttpResponse: Рендер страницы &#39;expression.html&#39; с результатом выражения или сообщением об ошибке.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s1">&#39;POST&#39;</span><span class="p">:</span>
+        <span class="n">user_expression</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;user_expression&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="n">is_safe_expression</span><span class="p">(</span><span class="n">user_expression</span><span class="p">):</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">result</span> <span class="o">=</span> <span class="nb">eval</span><span class="p">(</span><span class="n">user_expression</span><span class="p">)</span>
+                <span class="n">ExpressionHistory</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">expression</span><span class="o">=</span><span class="n">user_expression</span><span class="p">,</span> <span class="n">result</span><span class="o">=</span><span class="n">result</span><span class="p">)</span>
+                <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;expression.html&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;expression&#39;</span><span class="p">:</span> <span class="n">user_expression</span><span class="p">,</span> <span class="s1">&#39;result&#39;</span><span class="p">:</span> <span class="n">result</span><span class="p">})</span>
+            <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;expression.html&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;error&#39;</span><span class="p">:</span> <span class="s2">&quot;Invalid expression&quot;</span><span class="p">})</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">HttpResponseForbidden</span><span class="p">(</span><span class="s2">&quot;Unsafe expression&quot;</span><span class="p">)</span>
+
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">num_terms</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+        <span class="n">expression</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+        <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_terms</span><span class="p">):</span>
+            <span class="n">number</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">99</span><span class="p">)</span>
+            <span class="n">operation</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="s1">&#39;+&#39;</span><span class="p">,</span> <span class="s1">&#39;-&#39;</span><span class="p">])</span> <span class="k">if</span> <span class="n">i</span> <span class="o">!=</span> <span class="mi">0</span> <span class="k">else</span> <span class="s1">&#39;&#39;</span>
+            <span class="n">expression</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot; </span><span class="si">{</span><span class="n">operation</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">number</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="n">total</span> <span class="o">=</span> <span class="n">total</span> <span class="o">+</span> <span class="n">number</span> <span class="k">if</span> <span class="n">operation</span> <span class="o">!=</span> <span class="s1">&#39;-&#39;</span> <span class="k">else</span> <span class="n">total</span> <span class="o">-</span> <span class="n">number</span>
+        <span class="n">expression</span> <span class="o">=</span> <span class="n">expression</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">total</span>
+        <span class="n">ExpressionHistory</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">expression</span><span class="o">=</span><span class="n">expression</span><span class="p">,</span> <span class="n">result</span><span class="o">=</span><span class="n">result</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;expression.html&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;expression&#39;</span><span class="p">:</span> <span class="n">expression</span><span class="p">,</span> <span class="s1">&#39;result&#39;</span><span class="p">:</span> <span class="n">result</span><span class="p">})</span></div>
+
+
+
+<div class="viewcode-block" id="is_safe_expression">
+<a class="viewcode-back" href="../../developer_documentation.html#myapp.views.is_safe_expression">[документация]</a>
+<span class="k">def</span> <span class="nf">is_safe_expression</span><span class="p">(</span><span class="n">expr</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Проверяет, является ли математическое выражение безопасным для оценки.</span>
+
+<span class="sd">    :param expr: Строка, содержащая математическое выражение.</span>
+<span class="sd">    :return: Возвращает True, если выражение безопасно для оценки</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">safe_pattern</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;^[\d+\-*/\(\) ]+$&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nb">bool</span><span class="p">(</span><span class="n">safe_pattern</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">expr</span><span class="p">))</span></div>
+
+
+
+<div class="viewcode-block" id="expression_history">
+<a class="viewcode-back" href="../../developer_documentation.html#myapp.views.expression_history">[документация]</a>
+<span class="k">def</span> <span class="nf">expression_history</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Обработчик запроса для отображения истории математических выражений.</span>
+<span class="sd">    Отображает все сохраненные выражения и их результаты.</span>
+
+
+<span class="sd">    :param request:  Объект HttpRequest от Django.</span>
+<span class="sd">    :return: HttpResponse: Рендер страницы &#39;history.html&#39; с историей выражений.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">history</span> <span class="o">=</span> <span class="n">ExpressionHistory</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s1">&#39;-created_at&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;history.html&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;history&#39;</span><span class="p">:</span> <span class="n">history</span><span class="p">})</span></div>
+
+
+
+<div class="viewcode-block" id="str2words_view">
+<a class="viewcode-back" href="../../developer_documentation.html#myapp.views.str2words_view">[документация]</a>
+<span class="nd">@login_required</span>
+<span class="k">def</span> <span class="nf">str2words_view</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Обработчик запроса для анализа строки и извлечения слов и чисел.</span>
+<span class="sd">    Анализирует строку, введенную пользователем, извлекая слова и числа,</span>
+<span class="sd">    и сохраняет запрос в базу данных. Доступен только аутентифицированным пользователям.</span>
+
+<span class="sd">    :param request: Объект HttpRequest от Django.</span>
+<span class="sd">    :return: HttpResponse: Рендер страницы &#39;str2words.html&#39; с результатами анализа.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s1">&#39;POST&#39;</span><span class="p">:</span>
+        <span class="n">input_str</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;input_str&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+        <span class="n">words</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\b(?!\d+\b)\w+&#39;</span><span class="p">,</span> <span class="n">input_str</span><span class="p">)</span>
+        <span class="n">numbers</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\b\d+\b&#39;</span><span class="p">,</span> <span class="n">input_str</span><span class="p">)</span>
+
+        <span class="n">context</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;words_count&#39;</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">words</span><span class="p">),</span>
+            <span class="s1">&#39;numbers_count&#39;</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">numbers</span><span class="p">),</span>
+            <span class="s1">&#39;words&#39;</span><span class="p">:</span> <span class="n">words</span><span class="p">,</span>
+            <span class="s1">&#39;numbers&#39;</span><span class="p">:</span> <span class="n">numbers</span><span class="p">,</span>
+            <span class="s1">&#39;input_str&#39;</span><span class="p">:</span> <span class="n">input_str</span><span class="p">,</span>
+        <span class="p">}</span>
+        <span class="n">StringQuery</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+            <span class="n">user</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="p">,</span>
+            <span class="n">input_string</span><span class="o">=</span><span class="n">input_str</span><span class="p">,</span>
+            <span class="n">word_count</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">numbers</span><span class="p">),</span>
+            <span class="n">char_count</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">input_str</span><span class="p">)</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;str2words.html&#39;</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;str2words.html&#39;</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="str_history">
+<a class="viewcode-back" href="../../developer_documentation.html#myapp.views.str_history">[документация]</a>
+<span class="nd">@login_required</span>
+<span class="k">def</span> <span class="nf">str_history</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Обработчик запроса для отображения истории запросов пользователя.</span>
+<span class="sd">    Отображает историю запросов на анализ строк, сделанных текущим пользователем.</span>
+<span class="sd">    Доступен только аутентифицированным пользователям.</span>
+
+<span class="sd">    :param request: Объект HttpRequest от Django.</span>
+<span class="sd">    :return: Рендер страницы &#39;str_history.html&#39; с историей запросов.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">history</span> <span class="o">=</span> <span class="n">StringQuery</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">user</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="p">)</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s1">&#39;-query_date&#39;</span><span class="p">,</span> <span class="s1">&#39;-query_time&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;str_history.html&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;history&#39;</span><span class="p">:</span> <span class="n">history</span><span class="p">})</span></div>
+
+
+
+<div class="viewcode-block" id="RegisterUser">
+<a class="viewcode-back" href="../../developer_documentation.html#myapp.views.RegisterUser">[документация]</a>
+<span class="k">class</span> <span class="nc">RegisterUser</span><span class="p">(</span><span class="n">CreateView</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Класс представления для регистрации нового пользователя.</span>
+<span class="sd">    Позволяет новым пользователям зарегистрироваться в системе.</span>
+
+<span class="sd">    :param form_class: Форма для регистрации пользователя.</span>
+<span class="sd">    :param template_name: Шаблон для отображения страницы регистрации.</span>
+<span class="sd">    :param success_url: URL для перенаправления после успешной регистрации.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">form_class</span> <span class="o">=</span> <span class="n">RegisterUserForm</span>
+    <span class="n">template_name</span> <span class="o">=</span> <span class="s1">&#39;register.html&#39;</span>
+    <span class="n">success_url</span> <span class="o">=</span> <span class="n">reverse_lazy</span><span class="p">(</span><span class="s1">&#39;login&#39;</span><span class="p">)</span>
+
+<div class="viewcode-block" id="RegisterUser.form_valid">
+<a class="viewcode-back" href="../../developer_documentation.html#myapp.views.RegisterUser.form_valid">[документация]</a>
+    <span class="k">def</span> <span class="nf">form_valid</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">form</span><span class="p">):</span>
+        <span class="n">user</span> <span class="o">=</span> <span class="n">form</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+        <span class="n">login</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">request</span><span class="p">,</span> <span class="n">user</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s1">&#39;index&#39;</span><span class="p">)</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="LoginUser">
+<a class="viewcode-back" href="../../developer_documentation.html#myapp.views.LoginUser">[документация]</a>
+<span class="k">class</span> <span class="nc">LoginUser</span><span class="p">(</span><span class="n">LoginView</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Класс представления для входа пользователя в систему.</span>
+<span class="sd">    Позволяет пользователям войти в систему, используя свои учетные данные.</span>
+
+<span class="sd">    :param form_class: Форма для входа пользователя.</span>
+<span class="sd">    :param template_name: Шаблон для отображения страницы входа.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">form_class</span> <span class="o">=</span> <span class="n">LoginUserForm</span>
+    <span class="n">template_name</span> <span class="o">=</span> <span class="s1">&#39;login.html&#39;</span>
+
+<div class="viewcode-block" id="LoginUser.get_success_url">
+<a class="viewcode-back" href="../../developer_documentation.html#myapp.views.LoginUser.get_success_url">[документация]</a>
+    <span class="k">def</span> <span class="nf">get_success_url</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">reverse_lazy</span><span class="p">(</span><span class="s1">&#39;index&#39;</span><span class="p">)</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="logout_user">
+<a class="viewcode-back" href="../../developer_documentation.html#myapp.views.logout_user">[документация]</a>
+<span class="k">def</span> <span class="nf">logout_user</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Обработчик запроса для выхода пользователя из системы.</span>
+<span class="sd">    Позволяет пользователю выйти из системы и перенаправляет его на страницу входа.</span>
+
+<span class="sd">    :param request: Объект HttpRequest от Django.</span>
+<span class="sd">    :return: HttpResponse: Перенаправление на страницу входа.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">logout</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s1">&#39;login&#39;</span><span class="p">)</span></div>
+
+</pre></div>
+
+          </div>
+          <div class="page-nav">
+            <div class="inner"><ul class="page-nav">
+</ul><div class="footer" role="contentinfo">
+      &#169; Copyright 2024, Akarmain.
+    <br>
+    Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.6 with <a href="https://github.com/schettino72/sphinx_press_theme">Press Theme</a> 0.8.0.
+</div>
+            </div>
+          </div>
+      </page>
+    </div></div>
+    
+    
+  </body>
+</html>

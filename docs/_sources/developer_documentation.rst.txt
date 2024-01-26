@@ -1,0 +1,95 @@
+Документация для разработчиков
+===============================
+
+Модели
+------
+
+Модель `ExpressionHistory`
+--------------------------
+
+.. autoclass:: myapp.models.ExpressionHistory
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Модель `StringQuery`
+--------------------
+
+.. autoclass:: myapp.models.StringQuery
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Представления (Views)
+---------------------
+
+.. autofunction:: myapp.views.index
+
+.. autofunction:: myapp.views.riddle
+
+.. autofunction:: myapp.views.answer
+
+.. autofunction:: myapp.views.multiply
+
+.. autofunction:: myapp.views.generate_expression
+
+.. autofunction:: myapp.views.is_safe_expression
+
+.. autofunction:: myapp.views.expression_history
+
+.. autofunction:: myapp.views.str2words_view
+
+.. autofunction:: myapp.views.str_history
+
+Представления на основе классов (Class-Based Views)
+---------------------------------------------------
+
+.. autoclass:: myapp.views.RegisterUser
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+.. autoclass:: myapp.views.LoginUser
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Функции управления сессиями
+---------------------------
+
+.. autofunction:: myapp.views.logout_user
+
+Формы
+-----
+
+.. autoclass:: myapp.forms.RegisterUserForm
+   :members:
+   :undoc-members:
+
+.. autoclass:: myapp.forms.LoginUserForm
+   :members:
+   :undoc-members:
+
+Маршруты URL (URL Patterns)
+---------------------------
+
+.. code-block:: python
+
+    from django.contrib import admin
+    from django.urls import path
+    from myapp import views
+
+    urlpatterns = [
+        path('admin/', admin.site.urls),
+        path('', views.index, name='index'),
+        path('riddle/', views.riddle, name='riddle'),
+        path('answer/', views.answer, name='answer'),
+        path('multiply/', views.multiply, name='multiply'),
+        path('expression/', views.generate_expression, name='generate_expression'),
+        path('history/', views.expression_history, name='history'),
+        path('str2words/', views.str2words_view, name='str2words'),
+        path('str_history/', views.str_history, name='str_history'),
+        path('login/', views.LoginUser.as_view(), name='login'),
+        path('logout/', views.logout_user, name='logout'),
+        path('register/', views.RegisterUser.as_view(), name='register'),
+    ]

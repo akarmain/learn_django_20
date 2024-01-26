@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html  lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+      <title>Документация для разработчиков</title>
+    
+          <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+          <link rel="stylesheet" href="_static/theme.css " type="text/css" />
+      
+      <!-- sphinx script_files -->
+        <script src="_static/documentation_options.js?v=a2ea6a14"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="_static/translations.js?v=29b1f277"></script>
+
+      
+      <!-- bundled in js (rollup iife) -->
+      <!-- <script src="_static/theme-vendors.js"></script> -->
+      <script src="_static/theme.js" defer></script>
+    
+  <link rel="index" title="Алфавитный указатель" href="genindex.html" />
+  <link rel="search" title="Поиск" href="search.html" />
+  <link rel="prev" title="Документация пользователя" href="reStructuredText.html" /> 
+  </head>
+
+  <body>
+    <div id="app">
+    <div class="theme-container" :class="pageClasses"><navbar @toggle-sidebar="toggleSidebar">
+  <router-link to="index.html" class="home-link">
+    
+      <span class="site-name">Akarmain learn django</span>
+    
+  </router-link>
+
+  <div class="links">
+    <navlinks class="can-hide">
+
+
+
+    </navlinks>
+  </div>
+</navbar>
+
+      
+      <div class="sidebar-mask" @click="toggleSidebar(false)">
+      </div>
+        <sidebar @toggle-sidebar="toggleSidebar">
+          
+          <navlinks>
+            
+
+
+
+            
+          </navlinks><div id="searchbox" class="searchbox" role="search">
+  <div class="caption"><span class="caption-text">Быстрый поиск</span>
+    <div class="searchformwrapper">
+      <form class="search" action="search.html" method="get">
+        <input type="text" name="q" />
+        <input type="submit" value="Поиск" />
+        <input type="hidden" name="check_keywords" value="yes" />
+        <input type="hidden" name="area" value="default" />
+      </form>
+    </div>
+  </div>
+</div><div class="sidebar-links" role="navigation" aria-label="main navigation">
+  
+    <div class="sidebar-group">
+      <p class="caption">
+        <span class="caption-text"><a href="index.html#welcome-to-akarmain-learn-django-s-documentation">Contents:</a></span>
+      </p>
+      <ul class="current">
+        
+          <li class="toctree-l1 ">
+            
+              <a href="reStructuredText.html" class="reference internal ">Документация пользователя</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 current">
+            
+              <a href="#" class="reference internal current">Документация для разработчиков</a>
+            
+
+            
+              <ul>
+                
+                  <li class="toctree-l2"><a href="#id2" class="reference internal">Модели</a></li>
+                
+                  <li class="toctree-l2"><a href="#expressionhistory" class="reference internal">Модель ExpressionHistory</a></li>
+                
+                  <li class="toctree-l2"><a href="#stringquery" class="reference internal">Модель StringQuery</a></li>
+                
+                  <li class="toctree-l2"><a href="#views" class="reference internal">Представления (Views)</a></li>
+                
+                  <li class="toctree-l2"><a href="#class-based-views" class="reference internal">Представления на основе классов (Class-Based Views)</a></li>
+                
+                  <li class="toctree-l2"><a href="#id3" class="reference internal">Функции управления сессиями</a></li>
+                
+                  <li class="toctree-l2"><a href="#id4" class="reference internal">Формы</a></li>
+                
+                  <li class="toctree-l2"><a href="#url-url-patterns" class="reference internal">Маршруты URL (URL Patterns)</a></li>
+                
+              </ul>
+            
+          </li>
+
+        
+      </ul>
+    </div>
+  
+</div>
+        </sidebar>
+
+      <page>
+          <div class="body-header" role="navigation" aria-label="navigation">
+  
+  <ul class="breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+    
+    <li>Документация для разработчиков</li>
+  </ul>
+  
+
+  <ul class="page-nav">
+  <li class="prev">
+    <a href="reStructuredText.html"
+       title="предыдущая глава">← Документация пользователя</a>
+  </li>
+</ul>
+  
+</div>
+<hr>
+          <div class="content" role="main" v-pre>
+            
+  <section id="id1">
+<h1>Документация для разработчиков<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h1>
+<section id="id2">
+<h2>Модели<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h2>
+</section>
+<section id="expressionhistory">
+<h2>Модель <cite>ExpressionHistory</cite><a class="headerlink" href="#expressionhistory" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="myapp.models.ExpressionHistory">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">myapp.models.</span></span><span class="sig-name descname"><span class="pre">ExpressionHistory</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/myapp/models.html#ExpressionHistory"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#myapp.models.ExpressionHistory" title="Link to this definition">¶</a></dt>
+<dd><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">Model</span></code></p>
+<p>Эта модель предназначена для хранения истории математических выражений и их результатов.
+expression: Поле типа CharField с максимальной длиной 255 символов. В этом поле хранится строка, представляющая математическое выражение.
+result: Поле типа IntegerField. Здесь хранится числовой результат вычисления выражения expression.
+created_at: Поле типа DateTimeField. Это поле автоматически устанавливается в момент создания записи и хранит дату и время создания записи.</p>
+<dl class="py exception">
+<dt class="sig sig-object py" id="myapp.models.ExpressionHistory.DoesNotExist">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DoesNotExist</span></span><a class="headerlink" href="#myapp.models.ExpressionHistory.DoesNotExist" title="Link to this definition">¶</a></dt>
+<dd><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">ObjectDoesNotExist</span></code></p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="myapp.models.ExpressionHistory.MultipleObjectsReturned">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">MultipleObjectsReturned</span></span><a class="headerlink" href="#myapp.models.ExpressionHistory.MultipleObjectsReturned" title="Link to this definition">¶</a></dt>
+<dd><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">MultipleObjectsReturned</span></code></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="myapp.models.ExpressionHistory.created_at">
+<span class="sig-name descname"><span class="pre">created_at</span></span><a class="headerlink" href="#myapp.models.ExpressionHistory.created_at" title="Link to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="myapp.models.ExpressionHistory.expression">
+<span class="sig-name descname"><span class="pre">expression</span></span><a class="headerlink" href="#myapp.models.ExpressionHistory.expression" title="Link to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="myapp.models.ExpressionHistory.get_next_by_created_at">
+<span class="sig-name descname"><span class="pre">get_next_by_created_at</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">field=&lt;django.db.models.fields.DateTimeField:</span> <span class="pre">created_at&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_next=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#myapp.models.ExpressionHistory.get_next_by_created_at" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="myapp.models.ExpressionHistory.get_previous_by_created_at">
+<span class="sig-name descname"><span class="pre">get_previous_by_created_at</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">field=&lt;django.db.models.fields.DateTimeField:</span> <span class="pre">created_at&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_next=False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#myapp.models.ExpressionHistory.get_previous_by_created_at" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="myapp.models.ExpressionHistory.id">
+<span class="sig-name descname"><span class="pre">id</span></span><a class="headerlink" href="#myapp.models.ExpressionHistory.id" title="Link to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="myapp.models.ExpressionHistory.objects">
+<span class="sig-name descname"><span class="pre">objects</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;django.db.models.manager.Manager</span> <span class="pre">object&gt;</span></em><a class="headerlink" href="#myapp.models.ExpressionHistory.objects" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="myapp.models.ExpressionHistory.result">
+<span class="sig-name descname"><span class="pre">result</span></span><a class="headerlink" href="#myapp.models.ExpressionHistory.result" title="Link to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="stringquery">
+<h2>Модель <cite>StringQuery</cite><a class="headerlink" href="#stringquery" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="myapp.models.StringQuery">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">myapp.models.</span></span><span class="sig-name descname"><span class="pre">StringQuery</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/myapp/models.html#StringQuery"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#myapp.models.StringQuery" title="Link to this definition">¶</a></dt>
+<dd><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">Model</span></code></p>
+<p>модель используется для хранения информации о запросах пользователей, связанных с обработкой и анализом строк.
+user: Поле типа ForeignKey, связанное с моделью User. Это поле указывает на пользователя, который сделал запрос.
+query_date: Поле типа DateField, которое автоматически устанавливает текущую дату, когда был сделан запрос.
+query_time: Поле типа TimeField, которое автоматически устанавливает текущее время, когда был сделан запрос.
+input_string: Поле типа TextField, предназначенное для хранения входящей строки, подлежащей обработке.
+word_count: Поле типа IntegerField, в котором хранится количество слов, найденных в input_string.
+char_count: Поле типа IntegerField, в котором хранится количество символов в input_string.</p>
+<dl class="py exception">
+<dt class="sig sig-object py" id="myapp.models.StringQuery.DoesNotExist">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DoesNotExist</span></span><a class="headerlink" href="#myapp.models.StringQuery.DoesNotExist" title="Link to this definition">¶</a></dt>
+<dd><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">ObjectDoesNotExist</span></code></p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="myapp.models.StringQuery.MultipleObjectsReturned">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">MultipleObjectsReturned</span></span><a class="headerlink" href="#myapp.models.StringQuery.MultipleObjectsReturned" title="Link to this definition">¶</a></dt>
+<dd><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">MultipleObjectsReturned</span></code></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="myapp.models.StringQuery.char_count">
+<span class="sig-name descname"><span class="pre">char_count</span></span><a class="headerlink" href="#myapp.models.StringQuery.char_count" title="Link to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="myapp.models.StringQuery.get_next_by_query_date">
+<span class="sig-name descname"><span class="pre">get_next_by_query_date</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">field=&lt;django.db.models.fields.DateField:</span> <span class="pre">query_date&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_next=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#myapp.models.StringQuery.get_next_by_query_date" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="myapp.models.StringQuery.get_previous_by_query_date">
+<span class="sig-name descname"><span class="pre">get_previous_by_query_date</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">field=&lt;django.db.models.fields.DateField:</span> <span class="pre">query_date&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_next=False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#myapp.models.StringQuery.get_previous_by_query_date" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="myapp.models.StringQuery.id">
+<span class="sig-name descname"><span class="pre">id</span></span><a class="headerlink" href="#myapp.models.StringQuery.id" title="Link to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="myapp.models.StringQuery.input_string">
+<span class="sig-name descname"><span class="pre">input_string</span></span><a class="headerlink" href="#myapp.models.StringQuery.input_string" title="Link to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="myapp.models.StringQuery.objects">
+<span class="sig-name descname"><span class="pre">objects</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;django.db.models.manager.Manager</span> <span class="pre">object&gt;</span></em><a class="headerlink" href="#myapp.models.StringQuery.objects" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="myapp.models.StringQuery.query_date">
+<span class="sig-name descname"><span class="pre">query_date</span></span><a class="headerlink" href="#myapp.models.StringQuery.query_date" title="Link to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="myapp.models.StringQuery.query_time">
+<span class="sig-name descname"><span class="pre">query_time</span></span><a class="headerlink" href="#myapp.models.StringQuery.query_time" title="Link to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="myapp.models.StringQuery.user">
+<span class="sig-name descname"><span class="pre">user</span></span><a class="headerlink" href="#myapp.models.StringQuery.user" title="Link to this definition">¶</a></dt>
+<dd><p>Accessor to the related object on the forward side of a many-to-one or
+one-to-one (via ForwardOneToOneDescriptor subclass) relation.</p>
+<p>In the example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Child</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">parent</span> <span class="o">=</span> <span class="n">ForeignKey</span><span class="p">(</span><span class="n">Parent</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;children&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Child.parent</span></code> is a <code class="docutils literal notranslate"><span class="pre">ForwardManyToOneDescriptor</span></code> instance.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="myapp.models.StringQuery.user_id">
+<span class="sig-name descname"><span class="pre">user_id</span></span><a class="headerlink" href="#myapp.models.StringQuery.user_id" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="myapp.models.StringQuery.word_count">
+<span class="sig-name descname"><span class="pre">word_count</span></span><a class="headerlink" href="#myapp.models.StringQuery.word_count" title="Link to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="views">
+<h2>Представления (Views)<a class="headerlink" href="#views" title="Link to this heading">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="myapp.views.index">
+<span class="sig-prename descclassname"><span class="pre">myapp.views.</span></span><span class="sig-name descname"><span class="pre">index</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/myapp/views.html#index"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#myapp.views.index" title="Link to this definition">¶</a></dt>
+<dd><p>Обработчик запроса для главной страницы.
+При вызове этой функции пользователю отображается главная страница.
+:param Объект HttpRequest от Django.
+:return Рендер главной страницы „index.html“.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="myapp.views.riddle">
+<span class="sig-prename descclassname"><span class="pre">myapp.views.</span></span><span class="sig-name descname"><span class="pre">riddle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/myapp/views.html#riddle"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#myapp.views.riddle" title="Link to this definition">¶</a></dt>
+<dd><p>Обработчик запроса для главной страницы.
+При вызове этой функции пользователю отображается главная страница.
+:param Объект HttpRequest от Django.
+:return HttpResponse: Рендер главной страницы „index.html“.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="myapp.views.answer">
+<span class="sig-prename descclassname"><span class="pre">myapp.views.</span></span><span class="sig-name descname"><span class="pre">answer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/myapp/views.html#answer"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#myapp.views.answer" title="Link to this definition">¶</a></dt>
+<dd><p>Обработчик запроса для страницы с ответами на загадки.
+Показывает пользователю страницу с ответами на предыдущие загадки.</p>
+<p>:param Объект HttpRequest от Django.
+:return: HttpResponse: Рендер страницы „answer.html“ с ответами на загадки.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="myapp.views.multiply">
+<span class="sig-prename descclassname"><span class="pre">myapp.views.</span></span><span class="sig-name descname"><span class="pre">multiply</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/myapp/views.html#multiply"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#myapp.views.multiply" title="Link to this definition">¶</a></dt>
+<dd><p>Обработчик запроса для страницы умножения числа.
+На этой странице пользователь может ввести число, и функция
+вернет результат его умножения на числа от 1 до 10.
+:param Объект HttpRequest от Django.
+:return: HttpResponse: Рендер страницы „multiply.html“ с результатами умножения или сообщением об ошибке.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="myapp.views.generate_expression">
+<span class="sig-prename descclassname"><span class="pre">myapp.views.</span></span><span class="sig-name descname"><span class="pre">generate_expression</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/myapp/views.html#generate_expression"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#myapp.views.generate_expression" title="Link to this definition">¶</a></dt>
+<dd><p>Обработчик запроса для генерации и оценки математических выражений.</p>
+<p>При POST запросе пользователь отправляет математическое выражение,
+которое оценивается и записывается в историю. При GET запросе
+генерируется случайное выражение.
+:param request: Объект HttpRequest от Django.
+:return: HttpResponse: Рендер страницы „expression.html“ с результатом выражения или сообщением об ошибке.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="myapp.views.is_safe_expression">
+<span class="sig-prename descclassname"><span class="pre">myapp.views.</span></span><span class="sig-name descname"><span class="pre">is_safe_expression</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">expr</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/myapp/views.html#is_safe_expression"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#myapp.views.is_safe_expression" title="Link to this definition">¶</a></dt>
+<dd><p>Проверяет, является ли математическое выражение безопасным для оценки.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>expr</strong> – Строка, содержащая математическое выражение.</p>
+</dd>
+<dt class="field-even">Результат<span class="colon">:</span></dt>
+<dd class="field-even"><p>Возвращает True, если выражение безопасно для оценки</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="myapp.views.expression_history">
+<span class="sig-prename descclassname"><span class="pre">myapp.views.</span></span><span class="sig-name descname"><span class="pre">expression_history</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/myapp/views.html#expression_history"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#myapp.views.expression_history" title="Link to this definition">¶</a></dt>
+<dd><p>Обработчик запроса для отображения истории математических выражений.
+Отображает все сохраненные выражения и их результаты.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>request</strong> – Объект HttpRequest от Django.</p>
+</dd>
+<dt class="field-even">Результат<span class="colon">:</span></dt>
+<dd class="field-even"><p>HttpResponse: Рендер страницы „history.html“ с историей выражений.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="myapp.views.str2words_view">
+<span class="sig-prename descclassname"><span class="pre">myapp.views.</span></span><span class="sig-name descname"><span class="pre">str2words_view</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/myapp/views.html#str2words_view"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#myapp.views.str2words_view" title="Link to this definition">¶</a></dt>
+<dd><p>Обработчик запроса для анализа строки и извлечения слов и чисел.
+Анализирует строку, введенную пользователем, извлекая слова и числа,
+и сохраняет запрос в базу данных. Доступен только аутентифицированным пользователям.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>request</strong> – Объект HttpRequest от Django.</p>
+</dd>
+<dt class="field-even">Результат<span class="colon">:</span></dt>
+<dd class="field-even"><p>HttpResponse: Рендер страницы „str2words.html“ с результатами анализа.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="myapp.views.str_history">
+<span class="sig-prename descclassname"><span class="pre">myapp.views.</span></span><span class="sig-name descname"><span class="pre">str_history</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/myapp/views.html#str_history"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#myapp.views.str_history" title="Link to this definition">¶</a></dt>
+<dd><p>Обработчик запроса для отображения истории запросов пользователя.
+Отображает историю запросов на анализ строк, сделанных текущим пользователем.
+Доступен только аутентифицированным пользователям.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>request</strong> – Объект HttpRequest от Django.</p>
+</dd>
+<dt class="field-even">Результат<span class="colon">:</span></dt>
+<dd class="field-even"><p>Рендер страницы „str_history.html“ с историей запросов.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="class-based-views">
+<h2>Представления на основе классов (Class-Based Views)<a class="headerlink" href="#class-based-views" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="myapp.views.RegisterUser">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">myapp.views.</span></span><span class="sig-name descname"><span class="pre">RegisterUser</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/myapp/views.html#RegisterUser"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#myapp.views.RegisterUser" title="Link to this definition">¶</a></dt>
+<dd><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">CreateView</span></code></p>
+<p>Класс представления для регистрации нового пользователя.
+Позволяет новым пользователям зарегистрироваться в системе.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>form_class</strong> – Форма для регистрации пользователя.</p></li>
+<li><p><strong>template_name</strong> – Шаблон для отображения страницы регистрации.</p></li>
+<li><p><strong>success_url</strong> – URL для перенаправления после успешной регистрации.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="myapp.views.RegisterUser.form_class">
+<span class="sig-name descname"><span class="pre">form_class</span></span><a class="headerlink" href="#myapp.views.RegisterUser.form_class" title="Link to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="#myapp.forms.RegisterUserForm" title="myapp.forms.RegisterUserForm"><code class="xref py py-class docutils literal notranslate"><span class="pre">RegisterUserForm</span></code></a></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="myapp.views.RegisterUser.form_valid">
+<span class="sig-name descname"><span class="pre">form_valid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">form</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/myapp/views.html#RegisterUser.form_valid"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#myapp.views.RegisterUser.form_valid" title="Link to this definition">¶</a></dt>
+<dd><p>If the form is valid, save the associated model.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="myapp.views.RegisterUser.success_url">
+<span class="sig-name descname"><span class="pre">success_url</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'/login/'</span></em><a class="headerlink" href="#myapp.views.RegisterUser.success_url" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="myapp.views.RegisterUser.template_name">
+<span class="sig-name descname"><span class="pre">template_name</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'register.html'</span></em><a class="headerlink" href="#myapp.views.RegisterUser.template_name" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="myapp.views.LoginUser">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">myapp.views.</span></span><span class="sig-name descname"><span class="pre">LoginUser</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/myapp/views.html#LoginUser"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#myapp.views.LoginUser" title="Link to this definition">¶</a></dt>
+<dd><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">LoginView</span></code></p>
+<p>Класс представления для входа пользователя в систему.
+Позволяет пользователям войти в систему, используя свои учетные данные.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>form_class</strong> – Форма для входа пользователя.</p></li>
+<li><p><strong>template_name</strong> – Шаблон для отображения страницы входа.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="myapp.views.LoginUser.form_class">
+<span class="sig-name descname"><span class="pre">form_class</span></span><a class="headerlink" href="#myapp.views.LoginUser.form_class" title="Link to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="#myapp.forms.LoginUserForm" title="myapp.forms.LoginUserForm"><code class="xref py py-class docutils literal notranslate"><span class="pre">LoginUserForm</span></code></a></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="myapp.views.LoginUser.get_success_url">
+<span class="sig-name descname"><span class="pre">get_success_url</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/myapp/views.html#LoginUser.get_success_url"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#myapp.views.LoginUser.get_success_url" title="Link to this definition">¶</a></dt>
+<dd><p>Return the URL to redirect to after processing a valid form.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="myapp.views.LoginUser.template_name">
+<span class="sig-name descname"><span class="pre">template_name</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'login.html'</span></em><a class="headerlink" href="#myapp.views.LoginUser.template_name" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="id3">
+<h2>Функции управления сессиями<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="myapp.views.logout_user">
+<span class="sig-prename descclassname"><span class="pre">myapp.views.</span></span><span class="sig-name descname"><span class="pre">logout_user</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/myapp/views.html#logout_user"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#myapp.views.logout_user" title="Link to this definition">¶</a></dt>
+<dd><p>Обработчик запроса для выхода пользователя из системы.
+Позволяет пользователю выйти из системы и перенаправляет его на страницу входа.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>request</strong> – Объект HttpRequest от Django.</p>
+</dd>
+<dt class="field-even">Результат<span class="colon">:</span></dt>
+<dd class="field-even"><p>HttpResponse: Перенаправление на страницу входа.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="id4">
+<h2>Формы<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="myapp.forms.RegisterUserForm">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">myapp.forms.</span></span><span class="sig-name descname"><span class="pre">RegisterUserForm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/myapp/forms.html#RegisterUserForm"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#myapp.forms.RegisterUserForm" title="Link to this definition">¶</a></dt>
+<dd><blockquote>
+<div><p>Форма для регистрации нового пользователя.</p>
+</div></blockquote>
+<p>Наследует от UserCreationForm и добавляет дополнительные поля для логина,
+адреса электронной почты, пароля и подтверждения пароля. Поля настроены
+с пользовательскими классами CSS для улучшения внешнего вида.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>username</strong> – Поле для ввода логина пользователя.</p></li>
+<li><p><strong>email</strong> – Поле для ввода адреса электронной почты.</p></li>
+<li><p><strong>password1</strong> – Поле для ввода пароля.</p></li>
+<li><p><strong>password2</strong> – Поле для подтверждения пароля.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="myapp.forms.RegisterUserForm.Meta">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Meta</span></span><a class="reference internal" href="_modules/myapp/forms.html#RegisterUserForm.Meta"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#myapp.forms.RegisterUserForm.Meta" title="Link to this definition">¶</a></dt>
+<dd><dl class="py attribute">
+<dt class="sig sig-object py" id="myapp.forms.RegisterUserForm.Meta.fields">
+<span class="sig-name descname"><span class="pre">fields</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">('username',</span> <span class="pre">'email',</span> <span class="pre">'password1',</span> <span class="pre">'password2')</span></em><a class="headerlink" href="#myapp.forms.RegisterUserForm.Meta.fields" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="myapp.forms.RegisterUserForm.Meta.model">
+<span class="sig-name descname"><span class="pre">model</span></span><a class="headerlink" href="#myapp.forms.RegisterUserForm.Meta.model" title="Link to this definition">¶</a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">User</span></code></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="myapp.forms.RegisterUserForm.base_fields">
+<span class="sig-name descname"><span class="pre">base_fields</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'email':</span> <span class="pre">&lt;django.forms.fields.EmailField</span> <span class="pre">object&gt;,</span> <span class="pre">'password1':</span> <span class="pre">&lt;django.forms.fields.CharField</span> <span class="pre">object&gt;,</span> <span class="pre">'password2':</span> <span class="pre">&lt;django.forms.fields.CharField</span> <span class="pre">object&gt;,</span> <span class="pre">'username':</span> <span class="pre">&lt;django.forms.fields.CharField</span> <span class="pre">object&gt;}</span></em><a class="headerlink" href="#myapp.forms.RegisterUserForm.base_fields" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="myapp.forms.RegisterUserForm.declared_fields">
+<span class="sig-name descname"><span class="pre">declared_fields</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'email':</span> <span class="pre">&lt;django.forms.fields.EmailField</span> <span class="pre">object&gt;,</span> <span class="pre">'password1':</span> <span class="pre">&lt;django.forms.fields.CharField</span> <span class="pre">object&gt;,</span> <span class="pre">'password2':</span> <span class="pre">&lt;django.forms.fields.CharField</span> <span class="pre">object&gt;,</span> <span class="pre">'username':</span> <span class="pre">&lt;django.forms.fields.CharField</span> <span class="pre">object&gt;}</span></em><a class="headerlink" href="#myapp.forms.RegisterUserForm.declared_fields" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="myapp.forms.RegisterUserForm.media">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">media</span></span><a class="headerlink" href="#myapp.forms.RegisterUserForm.media" title="Link to this definition">¶</a></dt>
+<dd><p>Return all media required to render the widgets on this form.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="myapp.forms.LoginUserForm">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">myapp.forms.</span></span><span class="sig-name descname"><span class="pre">LoginUserForm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/myapp/forms.html#LoginUserForm"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#myapp.forms.LoginUserForm" title="Link to this definition">¶</a></dt>
+<dd><p>Форма для входа пользователя в систему.</p>
+<p>Наследует от AuthenticationForm и добавляет поля для логина и пароля с
+пользовательскими классами CSS. Предоставляет функционал для аутентификации пользователя.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>username</strong> – Поле для ввода логина пользователя.</p></li>
+<li><p><strong>password</strong> – Поле для ввода пароля пользователя.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="myapp.forms.LoginUserForm.base_fields">
+<span class="sig-name descname"><span class="pre">base_fields</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'password':</span> <span class="pre">&lt;django.forms.fields.CharField</span> <span class="pre">object&gt;,</span> <span class="pre">'username':</span> <span class="pre">&lt;django.forms.fields.CharField</span> <span class="pre">object&gt;}</span></em><a class="headerlink" href="#myapp.forms.LoginUserForm.base_fields" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="myapp.forms.LoginUserForm.declared_fields">
+<span class="sig-name descname"><span class="pre">declared_fields</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'password':</span> <span class="pre">&lt;django.forms.fields.CharField</span> <span class="pre">object&gt;,</span> <span class="pre">'username':</span> <span class="pre">&lt;django.forms.fields.CharField</span> <span class="pre">object&gt;}</span></em><a class="headerlink" href="#myapp.forms.LoginUserForm.declared_fields" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="myapp.forms.LoginUserForm.media">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">media</span></span><a class="headerlink" href="#myapp.forms.LoginUserForm.media" title="Link to this definition">¶</a></dt>
+<dd><p>Return all media required to render the widgets on this form.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="url-url-patterns">
+<h2>Маршруты URL (URL Patterns)<a class="headerlink" href="#url-url-patterns" title="Link to this heading">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.contrib</span> <span class="kn">import</span> <span class="n">admin</span>
+<span class="kn">from</span> <span class="nn">django.urls</span> <span class="kn">import</span> <span class="n">path</span>
+<span class="kn">from</span> <span class="nn">myapp</span> <span class="kn">import</span> <span class="n">views</span>
+
+<span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">path</span><span class="p">(</span><span class="s1">&#39;admin/&#39;</span><span class="p">,</span> <span class="n">admin</span><span class="o">.</span><span class="n">site</span><span class="o">.</span><span class="n">urls</span><span class="p">),</span>
+    <span class="n">path</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;index&#39;</span><span class="p">),</span>
+    <span class="n">path</span><span class="p">(</span><span class="s1">&#39;riddle/&#39;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">riddle</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;riddle&#39;</span><span class="p">),</span>
+    <span class="n">path</span><span class="p">(</span><span class="s1">&#39;answer/&#39;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">answer</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;answer&#39;</span><span class="p">),</span>
+    <span class="n">path</span><span class="p">(</span><span class="s1">&#39;multiply/&#39;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">multiply</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;multiply&#39;</span><span class="p">),</span>
+    <span class="n">path</span><span class="p">(</span><span class="s1">&#39;expression/&#39;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">generate_expression</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;generate_expression&#39;</span><span class="p">),</span>
+    <span class="n">path</span><span class="p">(</span><span class="s1">&#39;history/&#39;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">expression_history</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;history&#39;</span><span class="p">),</span>
+    <span class="n">path</span><span class="p">(</span><span class="s1">&#39;str2words/&#39;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">str2words_view</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;str2words&#39;</span><span class="p">),</span>
+    <span class="n">path</span><span class="p">(</span><span class="s1">&#39;str_history/&#39;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">str_history</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;str_history&#39;</span><span class="p">),</span>
+    <span class="n">path</span><span class="p">(</span><span class="s1">&#39;login/&#39;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">LoginUser</span><span class="o">.</span><span class="n">as_view</span><span class="p">(),</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;login&#39;</span><span class="p">),</span>
+    <span class="n">path</span><span class="p">(</span><span class="s1">&#39;logout/&#39;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">logout_user</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;logout&#39;</span><span class="p">),</span>
+    <span class="n">path</span><span class="p">(</span><span class="s1">&#39;register/&#39;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">RegisterUser</span><span class="o">.</span><span class="n">as_view</span><span class="p">(),</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;register&#39;</span><span class="p">),</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+          </div>
+          <div class="page-nav">
+            <div class="inner"><ul class="page-nav">
+  <li class="prev">
+    <a href="reStructuredText.html"
+       title="предыдущая глава">← Документация пользователя</a>
+  </li>
+</ul><div class="footer" role="contentinfo">
+      &#169; Copyright 2024, Akarmain.
+    <br>
+    Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.6 with <a href="https://github.com/schettino72/sphinx_press_theme">Press Theme</a> 0.8.0.
+</div>
+            </div>
+          </div>
+      </page>
+    </div></div>
+    
+    
+  </body>
+</html>
