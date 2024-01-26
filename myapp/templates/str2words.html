@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="center-container">
+    <div class="card" style="width: 20rem;">
+        <div class="card-body overflow-auto" style="max-height: 400px;">
+            <h5 class="card-title">Введите строку:</h5>
+            <form method="post">
+                {% csrf_token %}
+                <input class="input-group-text mt-2 mb-2"  type="text" name="input_str" id="input_str">
+                <button class="mb-4 btn btn-secondary" type="submit">Обработать</button>
+            </form>
+
+            <p>Введенная строка: {{ input_str }}</p>
+            <p>Количество слов: {{ words_count }}</p>
+            <p>Количество чисел: {{ numbers_count }}</p>
+
+            <p>Слова:</p>
+            <ul>
+                {% for word in words %}
+                <li>{{ word }}</li>
+                {% endfor %}
+            </ul>
+
+            <p>Числа:</p>
+            <ul>
+                {% for number in numbers %}
+                <li>{{ number }}</li>
+                {% endfor %}
+            </ul>
+
+        </div>
+    </div>
+</div>
+{% endblock %}

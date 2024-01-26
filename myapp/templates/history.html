@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="center-container">
+    <div class="card" style="width: 18rem;">
+        <div class="card-body overflow-auto" style="max-height: 400px;">
+            <h5 class="card-title">История выражений</h5>
+            <ul class="list-group list-group-flush">
+                {% for item in history %}
+                    <li class="list-group-item">{{ item.expression }} = {{ item.result }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}
