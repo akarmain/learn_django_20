@@ -16,7 +16,6 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/multiply/">Таблица умножения</a>
                 </li>
-
                 <li class="nav-item">
                     <a class="nav-link" href="/expression/">Выражение</a>
                 </li>
@@ -26,6 +25,20 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/str2words/">Анализ строк</a>
                 </li>
+            </ul>
+            <ul class="navbar-nav ms-auto">
+                {% if request.user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'logout' %}">{{ user.username }} | Выйти</a>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'register' %}">Регистрация</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'login' %}">Войти</a>
+                    </li>
+                {% endif %}
             </ul>
         </div>
     </div>
